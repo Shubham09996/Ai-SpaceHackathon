@@ -13,9 +13,6 @@ ENV/
 outputs/
 uploads/
 
-# YOLO model weights
-*.pt
-
 # Environment variables
 .env
 
