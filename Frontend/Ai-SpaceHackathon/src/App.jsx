@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import UploadSection from "./components/UploadSection";
 import ResultSection from "./components/ResultSection";
 import AispacestationBG from "./assets/AispacestationBG.mp4";
@@ -48,7 +48,7 @@ export default function App() {
       {/* 🌟 Main Content */}
       <div className="relative z-10 flex-grow px-4 py-10 w-full max-w-6xl mx-auto text-center">
         {/* Header */}
-        <div className="mt-15 mb-10">
+        <div className="mt-15 mb-10 ">
           <div className="text-4xl md:text-6xl font-extrabold text-pink-500 flex justify-center items-center gap-3 drop-shadow-lg">
             <span>🔭</span> <span>Astro Vision</span>
           </div>
