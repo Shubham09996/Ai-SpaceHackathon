@@ -1,126 +1,113 @@
-# AstroVision ✨
+# 🚀 AI-SpaceHackathon: Smart Object Detection Platform
 
-An AI-powered safety detection system for space missions, built during the BuildWithIndia 2.0 Hackathon.
+### A project built for the BuildWithDelhi 2.0 Hackathon Finale at Microsoft Office, Gurugram 🏢
 
-
----
-
-## 🔠 Problem Statement
-
-Astronauts rely on the availability of critical tools like fire extinguishers, oxygen tanks, and toolboxes to ensure operational safety. Any misplacement or unavailability can lead to life-threatening consequences.
+> **Team:**  
+> 👩‍💼 Ginni (Team Leader)  
+> 👨‍💻 Shubham Gupta  
+> 👨‍💻 Deepak Yadav
 
 ---
 
-## 🤖 Our Solution
+## 🧠 Project Overview
 
-AstroVision is an object detection system trained using a synthetic dataset from Falcon (Duality AI). It identifies essential equipment in space station environments in real-time using a custom YOLOv8 model.
+This project is an AI-powered web platform designed to **detect and classify critical objects** used in industrial and space environments using a custom-trained YOLOv8 model.
 
----
+### 🛰️ Detected Objects:
+- 🧯 **Fire Extinguisher**
+- 🧰 **ToolBox**
+- 🪐 **Oxygen Tank**
 
-## 🪀 Features
-
-- Detects fire extinguisher, toolbox, oxygen tank
-- Handles occlusion, lighting variations
-- Friendly dashboard UI
-- Alert system with voice + text
-- Companion App Simulation
-- Falcon retraining integration (conceptual)
+With real-time detection and intuitive UI/UX, the platform is tailored for **MSMEs, defense, and space missions** where quick identification of equipment is crucial.
 
 ---
 
-## 🎓 Technologies Used
+## 🗂️ Folder Structure
 
-- YOLOv8 (Ultralytics)
-- OpenCV
-- Python
-- Figma (UI design)
-- Streamlit (for frontend simulation)
-- Falcon by Duality AI (for dataset)
+AI-SPACEHACKATHON/
+└── AI-Hackathon-MS/
+    ├── Backend/
+    │   ├── flask_server/            ← YOLOv8 model inference (Python + Flask)
+    │   ├── node_server/             ← Acts as bridge between frontend and Flask
+    │   └── .gitignore
+    ├── Frontend\Ai-SpaceHackathon/
+    │   ├── public/                  ← Static assets
+    │   ├── src/
+    │   │   ├── assets/              ← UI images, logos
+    │   │   ├── components/          ← React components (Upload, Result, etc.)
+    │   │   ├── App.jsx              ← Root component
+    │   │   ├── index.css            ← Global styles
+    │   │   └── main.jsx             ← Entry point for Vite
+    │   ├── .gitignore
+    │   ├── eslint.config.js
+    │   ├── index.html
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── README.md
+    │   └── vite.config.js
+    └── README.md
+
+
+## ⚙️ Tech Stack
+
+| Layer       | Tech Used                             |
+|-------------|----------------------------------------|
+| Frontend    | React.js + TailwindCSS + Vite         |
+| Backend API | Node.js + Express                     |
+| ML Server   | Flask + Ultralytics YOLOv8 (v8.3.172) |
+| Deployment  | (Can be: Render / Railway / Vercel)   |
 
 ---
 
-## 🔧 Installation Instructions
+## 🧪 Model Performance
 
+| Metric          | Score     |
+|-----------------|-----------|
+| Precision       | 0.999     |
+| Recall          | 0.963     |
+| mAP@0.5         | 0.976     |
+| mAP@0.5:0.95    | 0.947     |
+| Inference Time  | ~5.5 ms   |
 
+> 📌 Trained using 400+ custom-labeled images on 3 classes with YOLOv8s.
 
-### Clone the Repository
+---
+
+## 🌐 How It Works
+
+1. **User uploads image** from browser
+2. React app sends it to **Node.js server**
+3. Node relays the image to **Flask server** hosting the YOLOv8 model
+4. Flask processes image → returns prediction + annotated image
+5. Result shown on UI with bounding boxes and labels
+
+---
+
+## 📦 Installation & Run Locally
+
+### Backend Setup
+
 ```bash
-git clone https://github.com/your-username/astroguard.git
-cd astroguard
-```
-
-### Install Dependencies
-```bash
+cd Backend/flask_server
 pip install -r requirements.txt
-```
+python app.py
 
-### Run Frontend Simulation (Streamlit)
-```bash
-streamlit run app.py
-```
 
----
+🎯 Future Scope
+🌐 Support multiple object detection models (like YOLOv9, SSD, etc.)
 
-## 🏠 Folder Structure
-```
-AstroVision/
-├── app.py                  # Streamlit App
-├── train.py                # YOLOv8 Training Script
-├── predict.py              # YOLOv8 Inference Script
-├── best.pt                 # Trained YOLOv8 Model
-├── data.yaml               # Dataset Config
-├── runs/                   # Training results, charts
-├── assets/                 # UI Screenshots, demo media
-├── README.md
-└── requirements.txt
-```
+🧪 Add real-time webcam detection
 
----
+📲 Deploy as mobile PWA
 
-## 📊 Performance (Sample)
-- mAP@0.5: 0.74
-- Precision: 78%
-- Recall: 80%
-- Confusion Matrix: Available in `/runs/`
+📦 Train with larger datasets from industrial areas
 
----
 
-## 🎒 Bonus Use Case - AstroGuard Companion
+## 🤝 Acknowledgements
 
-- Detects missing tools
-- Sends alerts (text + voice)
-- Falcon used to auto-update models over time
-- Mobile view for Earth-based team
+- Ultralytics YOLOv8
+- BuildWithDelhi 2.0 — An 8-hour hackathon organized by Devnovate in collaboration with Microsoft
+- Bhai Parmanand Institute of Business Studies
 
----
 
-## 🚀 Deployment (Streamlit Cloud)
-
-> **Fastest Way:** Deploy frontend UI with fake logic on Streamlit
-
-### Steps:
-1. Push this repo to GitHub
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Click **New App**
-4. Choose your GitHub repo
-5. Set `app.py` as the entry point
-6. Click **Deploy**
-
-App will be live at: `https://your-app-name.streamlit.app`
-
----
-
-## 🖇 Future Scope
-
-- Real-time backend with Jetson Nano
-- Falcon loop retraining pipeline
-- Anomaly detection
-- Mobile App deployment
-
----
-
-## 🙏 Acknowledgements
-
-- Duality AI + Falcon for dataset
-- Ultralytics for YOLOv8
-- Hackathon Team and Mentors
+🧑‍💻 Developed with ❤️ by Team "Brain not! Found"
